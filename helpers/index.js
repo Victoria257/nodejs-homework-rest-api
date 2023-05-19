@@ -1,7 +1,7 @@
 const HttpError = require("./HttpError");
-const addSchema = require("./schemas");
+const ctrWrapper = require("./ctrWrapper");
 
 module.exports = {
   HttpError,
-  addSchema,
+  ctrWrapper,
 };
