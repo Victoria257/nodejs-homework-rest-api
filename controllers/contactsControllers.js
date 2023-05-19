@@ -23,7 +23,7 @@ const addContact = async (req, res) => {
 
 const updateContact = async (req, res) => {
   const { id } = req.params;
-  const result = contacts.updateContact(id, req.body);
+  const result = await contacts.updateContact(id, req.body);
   if (!result) {
     throw HttpError(404, "Not found");
   }
@@ -32,7 +32,7 @@ const updateContact = async (req, res) => {
 
 const delContact = async (req, res) => {
   const { id } = req.params;
-  const result = contacts.removeContact(id);
+  const result = await contacts.removeContact(id);
   if (!result) {
     throw HttpError(404, "Not found");
   }
