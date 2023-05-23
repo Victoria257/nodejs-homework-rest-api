@@ -1,3 +1,7 @@
+// sATf1Rn6mwez5dm8
+//mongodb+srv://Vika:sATf1Rn6mwez5dm8@cluster0.jbm8q9s.mongodb.net/
+//mongodb+srv://Vika:sATf1Rn6mwez5dm8@cluster0.jbm8q9s.mongodb.net/?retryWrites=true&w=majority
+
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
