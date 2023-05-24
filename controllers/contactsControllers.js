@@ -34,9 +34,21 @@ const delContact = async (req, res) => {
   const { id } = req.params;
   const result = await Contact.findByIdAndDelete(id);
   if (!result) {
-    throw HttpError(404, "Not found");
+    throw HttpError(404, "Not found!!!");
   }
   res.json({ message: "Delete success", data: result });
+};
+
+const updateStatusContact = async (req, res) => {
+  if (Object.keys(req.body).length === 0) {
+    throw HttpError(400, "missing field favorite");
+  }
+  const { id } = req.params;
+  const result = await Contact.findByIdAndUpdate(id, req.body, { new: true });
+  if (!result) {
+    throw HttpError(404, "Not found");
+  }
+  res.json({ message: "Remove success", data: result });
 };
 
 module.exports = {
@@ -45,4 +57,5 @@ module.exports = {
   addContact: ctrWrapper(addContact),
   updateContact: ctrWrapper(updateContact),
   delContact: ctrWrapper(delContact),
+  updateStatusContact: ctrWrapper(updateStatusContact),
 };
