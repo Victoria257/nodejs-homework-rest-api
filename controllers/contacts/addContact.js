@@ -1,6 +1,5 @@
-const { Contact } = require("../../models/contact");
-
 const { ctrWrapper } = require("../../helpers");
+const { Contact } = require("../../models/contact/schemas");
 
 const addContact = async (req, res) => {
   const newContact = await Contact.create(req.body);
