@@ -1,7 +1,8 @@
 const app = require("./app");
 const mongoose = require("mongoose");
 
-const { DB_HOST } = require("./config");
+const { DB_HOST } = process.env;
+// додаємо на хостинг в Environment key: DB_HOST , value -значення без кавичок
 
 mongoose
   .connect(DB_HOST)
