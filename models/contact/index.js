@@ -1,4 +1,4 @@
-const { Contact } = require("./contactSchema");
+const { Contact } = require("./contact");
 const { addSchema } = require("./addSchema");
 const { updateFavoriteSchema } = require("./updateFavoriteSchema");
 

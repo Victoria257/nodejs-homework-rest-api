@@ -1,4 +1,4 @@
-const { Contact } = require("../../models/contact/schemas");
+const { Contact } = require("../../models/contact");
 
 const { ctrWrapper } = require("../../helpers");
 

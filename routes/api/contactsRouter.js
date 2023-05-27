@@ -11,10 +11,7 @@ const {
 } = require("../../controllers/contacts");
 
 const { validateBody, isValidId } = require("../../middlewares");
-const {
-  addSchema,
-  updateFavoriteSchema,
-} = require("../../models/contact/schemas");
+const { addSchema, updateFavoriteSchema } = require("../../models/contact");
 
 router.get("/", getAll);
 

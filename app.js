@@ -4,7 +4,8 @@ const cors = require("cors");
 require("dotenv").config();
 // так ми додаємо файл .env в process.env і тепер зможемо його використовувати ( в нашому випадку в файлі server.js)
 
-const contactsRouter = require("./routes/api");
+const { authRouter } = require("./routes/api");
+const { contactsRouter } = require("./routes/api");
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
 
+app.use("/api/auth", authRouter);
 app.use("/api/contacts", contactsRouter);
 
 app.use((req, res) => {
