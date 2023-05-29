@@ -1,6 +1,7 @@
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
+
 require("dotenv").config();
 // так ми додаємо файл .env в process.env і тепер зможемо його використовувати ( в нашому випадку в файлі server.js)
 
