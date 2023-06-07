@@ -11,18 +11,19 @@ const { User } = require("../../models/user");
 
 app.post("/api/auth/users/login", login);
 
-let server;
 let mongoServer;
+const email = "max@gmail.com";
+const password = "1234567";
 
 describe("test login-ctrl", () => {
   beforeAll(async () => {
     mongoServer = await MongoMemoryServer.create();
     const mongoUri = mongoServer.getUri();
     await mongoose.connect(mongoUri);
-    const avatarURL = gravatar.url("max@gmail.com");
-    const hashedPassword = await bcrypt.hash("1234567", 10);
+    const avatarURL = gravatar.url(email);
+    const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = await User.create({
-      email: "max@gmail.com",
+      email,
       password: hashedPassword,
       avatarURL,
     });
@@ -33,22 +34,17 @@ describe("test login-ctrl", () => {
     await mongoServer.stop();
   });
 
-  beforeEach(() => {
-    server = app.listen(3000);
-    console.log("3000!");
-  });
-  afterEach(() => {
-    server.close();
-    console.log("server close");
-  });
   test("login return token ahd user", async () => {
     const response = await request(app)
       .post("/api/auth/users/login")
-      .send({ email: "max@gmail.com", password: "1234567" });
-    if (response.statusCode !== 200) {
-      console.log(response.body);
-    }
+      .send({ email, password });
+
     console.log(response.body);
     expect(response.statusCode).toBe(200);
+    expect(response.body).toHaveProperty("token");
+    expect(response.body).toHaveProperty("user");
+    expect(response.body.user).toHaveProperty("email");
+
+    expect(typeof response.body.user.email).toBe("string");
   });
 });
