@@ -1,5 +1,6 @@
-const { HttpError, ctrWrapper, sendEmail } = require("../../helpers");
+const { HttpError, ctrWrapper } = require("../../helpers");
 const { User } = require("../../models/user");
+const sendEmail = require("../../services/email/sendEmail");
 const BASE_URL = process.env;
 
 const resendVerifyEmail = async (req, res) => {
